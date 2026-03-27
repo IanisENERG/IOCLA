@@ -23,6 +23,11 @@ main:
                             ; DO NOT REMOVE/MODIFY THIS LINE
 
     ; TODO: find the minimum of the two numbers and store it in r9
+    cmp r9, r10
+    jl print_min
+    xchg r9, r10
+
+print_min:
     PRINTF64 `%d\n\x0`, r9 ; print the minimum
     xor rax, rax
 

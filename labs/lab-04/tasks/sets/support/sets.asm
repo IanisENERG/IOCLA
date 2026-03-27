@@ -21,21 +21,35 @@ main:
     PRINTF64 `%u\n\x0`, rbx ; print the second set
 
     ; TODO1: reunion of the two sets
-
-
+    mov rdx, rax
+    or rdx, rbx
+    PRINTF64 `%u\n\x0`, rdx
     ; TODO2: adding an element to a set
-
+    or rax, 0x1ff
+    PRINTF64 `%u\n\x0`, rax
 
     ; TODO3: intersection of the two sets
-
+    mov r8, rax
+    and r8, rbx
+    PRINTF64 `%u\n\x0`, r8
 
     ; TODO4: the complement of a set
-
+    mov r9, rax
+    not r9
+    PRINTF64 `%u\n\x0`, r9
 
     ; TODO5: removal of an element from a set
-
+    mov rdx, 1
+    shl rdx, 5
+    not rdx
+    and rax, rdx
+    PRINTF64 `%u\n\x0`, rax
 
     ; TODO6: difference of two sets
+    not rbx
+    and rax, rbx
+    PRINTF64 `%u\n\x0`, rax
+
 
     xor rax, rax
 
