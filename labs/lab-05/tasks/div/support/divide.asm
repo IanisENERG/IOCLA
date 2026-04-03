@@ -34,8 +34,9 @@ main:
     mov bl, ah
     PRINTF64 `Remainder: %hhu\n\x0`, rbx
 
+    ; TODO: Calculate quotient and remainder for dividend2 / divisor2.
 
-    ; TODO: Calculate quotient and remainder for 67254 / 1349.
+    ; TODO: Calculate quotient and remainder for dividend3 / divisor3.
 
     xor rdx, rdx
     mov eax, dword [dividend2]
