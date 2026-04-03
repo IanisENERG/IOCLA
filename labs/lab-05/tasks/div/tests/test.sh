@@ -4,7 +4,7 @@
 # shellcheck disable=SC1091
 source graded_test.inc.sh
 
-binary="../support/divide"
+binary="../support/divide.asm"
 
 OUTPUT=$($binary)
 
