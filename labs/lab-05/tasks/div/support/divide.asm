@@ -1,7 +1,8 @@
 ; SPDX-License-Identifier: BSD-3-Clause
-; https://en.wikibooks.org/wiki/X86_Assembly/Arithmetic
 
 %include "printf64.asm"
+
+; https://en.wikibooks.org/wiki/X86_Assembly/Arithmetic
 
 section .data
     dividend1 db 91
@@ -34,28 +35,35 @@ main:
     mov bl, ah
     PRINTF64 `Remainder: %hhu\n\x0`, rbx
 
-    ; TODO: Calculate quotient and remainder for dividend2 / divisor2.
-
-    ; TODO: Calculate quotient and remainder for dividend3 / divisor3.
-
     xor rdx, rdx
     mov eax, dword [dividend2]
     mov dx, ax
     shr eax, 16
     xchg ax, dx
-    mov bx, dword [divisor2]
+    mov bx, word [divisor2]
     div bx
 
-    xor ebx, ebx
+    xor rbx, rbx
     mov bx, ax
-    PRINTF32 `Quotient: %hhu\n\x0`, rbx
+    PRINTF64 `Quotient: %hu\n\x0`, rbx
 
-    xor ebx, ebx
+    xor rbx, rbx
     mov bx, dx
-    PRINTF32 `Remainder: %hhu\n\x0`, rbx
+    PRINTF64 `Remainder: %hu\n\x0`, rbx
 
+    mov rax, qword [dividend3]
+    xor rdx, rdx
+    mov ebx, dword [divisor3]
+    div ebx
 
-    ; TODO: Calculate quotient and remainder for 69094148 / 87621.
+    PRINTF64 `Quotient: %lu\nRemainder: %lu\n\x0`, rax, rdx
+
+    mov rax, qword [dividend4]
+    mov rdx, qword [dividend4 + 8]
+    mov rbx, qword [divisor4]
+    div rbx
+
+    PRINTF64 `Quotient: 0x%lx\nRemainder: 0x%lx\n\x0`, rax, rdx
 
     leave
     ret

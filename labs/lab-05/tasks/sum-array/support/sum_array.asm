@@ -32,6 +32,8 @@ add_byte_array_element:
 
     ; TODO Compute sum for elements in word_array
 
+    mov al, word [word_array]
+
     ; TODO Compute sum for elements in dword_array
 
     ; TODO Compute sum for elements in qword_array
